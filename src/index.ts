@@ -5,7 +5,7 @@
  * 
  **/
 import { readFileSync } from 'fs';
-import type { Frame, FrameSeries, TestData } from './types';
+import type { Frame, FrameSeries, TestData } from './types/index.ts';
 
 /**
  * parse and validate frame data string and return frame series
@@ -110,7 +110,7 @@ const parseLineData = (line: string | undefined): [FrameSeries, number] => {
  * 
  */
 const parseInputFile = (fileName?: string): TestData[] => {
-    let file = fileName || "data/input.txt";
+    let file = fileName || "src/data/input.txt";
 
     try {
         const input = readFileSync(file, 'utf8');
