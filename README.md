@@ -8,13 +8,42 @@ A TypeScript application that calculates bowling scores from frame data.
 one-com/
 ├── src/                    # Source code directory
 │   ├── index.ts           # Main application file
-│   ├── types/             # Type definitions
+│   ├── core/              # Core business logic
+│   │   ├── ScoreCalculator.ts  # Bowling score calculation logic
+│   │   └── types.ts       # Type definitions
+│   ├── utils/             # Utility functions
+│   │   ├── FileParser.ts  # Input file parsing
+│   │   ├── TestRunner.ts  # Test execution
+│   │   └── Validator.ts   # Input validation
 │   ├── test/              # Test files
 │   └── data/              # Input data files
+│       ├── input.txt      # Sample input data
+│       └── input2.txt     # Additional test data, you can add your own test data
 ├── Dockerfile              # Docker configuration
-├── package.json            # Dependencies
-└── tsconfig.json           # TypeScript config
+├── .dockerignore           # Docker ignore file
+├── package.json            # Dependencies and scripts
+├── bun.lock               # Bun lock file
+├── tsconfig.json          # TypeScript config
+└── .gitignore             # Git ignore file
 ```
+
+## Dependencies
+
+- **Bun** (recommended) - Modern JavaScript runtime
+
+   Homebrew:
+   ```bash
+   brew install oven-sh/bun/bun # for macOS and Linux
+   ```
+
+   Curl:
+
+   ```bash
+   curl -fsSL https://bun.com/install | bash # for macOS, Linux, and WSL
+   ```
+
+- **TypeScript 5+** - For type safety and compilation
+- **Docker** - For containerized deployment (optional)
 
 ## Running with Docker
 
@@ -42,7 +71,7 @@ one-com/
    docker run --rm -v $(pwd)/src/data:/app/src/data bowling-app src/data/input2.txt
    ```
 
-## Running Locally (without Docker)
+## Running Locally (without Docker, but install `Bun` first) 
 
 1. **Install dependencies:**
    ```bash
@@ -57,6 +86,13 @@ one-com/
 3. **Run in development mode:**
    ```bash
    bun run dev
+   ```
+
+4. **Run different test file:**
+
+   To run using different input test files, create `.txt` file with format explained below section  in `src/data/` folder, and run:
+   ```bash
+   bun run start src/data/<your_file.txt>
    ```
 
 ## Input Data Format
@@ -74,6 +110,9 @@ frames:score
 - First line is a header: `frames:score`
 - Frame data is in JSON format
 - Each frame is an array of 1-2 numbers representing rolls
+- Strike frame has length 1, and spare and open frame has length 2
+- Empty frame is valid (we count it as zero)
+- Non-array frame is INVALID
 
 ## Features
 
