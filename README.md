@@ -23,14 +23,23 @@ one-com/
    docker build -t bowling-app .
    ```
 
-2. **Run the container:**
+2. **Run with default input file:**
    ```bash
    docker run --rm bowling-app
    ```
 
-3. **Run with custom data file:**
+3. **Run with different input file:**
    ```bash
-   docker run --rm -v $(pwd)/src/data:/app/src/data bowling-app
+   # Use input2.txt
+   docker run --rm bowling-app src/data/input2.txt
+   
+   # Use custom input file
+   docker run --rm bowling-app src/data/my-input.txt
+   ```
+
+4. **Run with custom data file (mounted volume):**
+   ```bash
+   docker run --rm -v $(pwd)/src/data:/app/src/data bowling-app src/data/input2.txt
    ```
 
 ## Running Locally (without Docker)

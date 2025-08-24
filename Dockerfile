@@ -18,4 +18,5 @@ COPY tsconfig.json ./
 RUN bun run build
 
 # Run the application
-CMD ["bun", "run", "src/index.ts"]
+ENTRYPOINT ["bun", "run", "src/index.ts"]
+CMD ["src/data/input.txt"]

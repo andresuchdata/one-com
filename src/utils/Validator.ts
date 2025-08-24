@@ -64,7 +64,7 @@ export class Validator {
             throw new Error(`Invalid score: ${score}`);
         }
 
-        if (!frames || frames.length === 0) {
+        if (!frames) {
             throw new Error(`Invalid frames: ${frames}`);
         }
 

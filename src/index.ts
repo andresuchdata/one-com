@@ -9,10 +9,13 @@ import { TestRunner } from './utils/TestRunner';
 
 // Main application flow
 const main = () => {
-    console.log("Parsing test data: (default file: src/data/input.txt)");
-    const testData = FileParser.parseInputFile();
+    // Get input file from command line argument or use default
+    const inputFile = process.argv[2] || "src/data/input.txt";
+    
+    console.log(`Parsing test data: ${inputFile}`);
+    const testData = FileParser.parseInputFile(inputFile);
 
-    console.log("Executing calculation test: \n");
+    console.log("Executing calculation test:");
     TestRunner.executeCalculationTest(testData);
 };
 

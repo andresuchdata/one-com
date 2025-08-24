@@ -7,7 +7,9 @@ export class TestRunner {
      */
     static executeCalculationTest(testData: TestData[]): void {
         for (let i = 0; i < testData.length; i++) {
-            console.log(`\nTest ${i + 1}`);
+            console.log(`==========================================================================`);
+            console.log(`Starting Test ${i + 1}....`);
+            console.log(`==========================================================================`);
             
             const frame = testData[i]?.frames;
             const baselineScore = testData[i]?.score;
@@ -19,7 +21,10 @@ export class TestRunner {
             }
 
             const result = calculatedScore === baselineScore ? "PASS" : "FAIL";
+            
+            console.log(`==========================================================================`);
             console.log(`Test ${i + 1}: Calculated score: ${calculatedScore}, Baseline score: ${baselineScore}, Result: ${result}`);
+            console.log(`==========================================================================`);
         }
     }
 }
