@@ -1,8 +1,14 @@
 {
-  "name": "one-com",
-  "module": "index.ts",
+  "name": "bowling-score-calculator",
+  "module": "src/index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "dev": "bun --watch src/index.ts",
+    "test": "bun test"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
